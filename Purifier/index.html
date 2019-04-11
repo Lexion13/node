@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = “ja”>
+<head>
+  <meta charset = “UFT-8”>
+  <title>HTML Purifier</title>
+</head>
+
+
+
+<body>
+<div id="wrapper">
+<h1>HTML Purifier</h1>
+
+<form action="" name="form1" method="post">
+  <table class="purifier-table">
+    <tr>
+      <th>入力</th>
+    </tr>
+    <tr>
+      <td><textarea name="inputdata" rows="10" cols="64"></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" value="変換" onClick="purify(); return false;">
+        <input type="reset" value="リセット">
+      </td>
+    </tr>
+  </table>
+  <table class="purifier-table">
+    <tr>
+      <th>出力</th>
+    </tr>
+    <tr>
+      <td><textarea name="outputdata" rows="10" cols="64"></textarea></td>
+    </tr>
+    <tr>
+      <td>文字数：<input value="0" name="counts"></td>
+    </tr>
+  </table>
+</form>
+
+
+<form action="" name="form2" method="post">
+<table class="kwd-table">
+  <tr>
+    <th>出力2</th>
+  </tr>
+  <tr>
+    <td>キーワード検索：<input name="kwd"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="検索" onClick="keyword(); return false;">
+      <input type="reset" value="リセット">
+    </td>
+  </tr>
+  <tr>
+    <td>キーワード含有数：<input value="0" name="kwd_counts"></td>
+  </tr>
+</table>
+</form>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+<style>
+
+#wrapper {
+ text-align: center;
+}
+
+
+.purifier-table{
+  margin: 0 auto;
+}
+
+.kwd-table{
+  margin: 0 auto;
+}
+
+form {
+  display: block;
+}
+
+table{
+  margin-bottom: 20px;
+}
+
+</style>
+
+
+
+<script>
+
+function purify(){
+  var a = document.form1.inputdata.value;
+  var e = document.form1.outputdata;
+  var u = document.form1.counts;
+
+  e.value = a.replace(/(<(".*?"|'.*?'|[^'"])*?>|\[(.*?)\])/g,"");
+  u.value = e.value.replace(/\n/g,"").length;
+}
+
+function keyword(){
+  var i = document.form2.kwd;
+  var o = document.form1.outputdata.value;
+  var s = document.form2.kwd_counts;
+
+  s.value = ( o.match( new RegExp( i.value, "g" ) ) || [] ).length;
+}
+
+
+</script>

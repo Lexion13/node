@@ -1,0 +1,37 @@
+
+<form action="" name="form2" method="post">
+<table class="kwd-table">
+  <tr>
+    <th>出力2</th>
+  </tr>
+  <tr>
+    <td>キーワード検索：<input name="kwd"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="検索" onClick="kwd_a(); return false;">
+      <input type="reset" value="リセット">
+    </td>
+  </tr>
+  <tr>
+    <td>キーワード含有数：<input value="0" name="kwd_counts"></td>
+  </tr>
+</table>
+</form>
+
+
+<script>
+
+
+function kwd_a(){
+  // var i = document.form2.kwd;
+  // var o = document.form1.outputdata.value;
+  // var s = document.form2.kwd_counts;
+
+  var s = document.form2.kwd_counts;
+
+  s.value = "sasasasq";
+}
+
+
+</script>
