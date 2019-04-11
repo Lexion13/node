@@ -7,7 +7,7 @@ def baibai(txt_num, multi_num):
 
         return numnum
 
-
+#baibaiのファンクション内でInt形式にした方がいい、変数定義と関数定義が逆で可読性が低い
 numnum = int()
 txt_num = []
 result_num = []
