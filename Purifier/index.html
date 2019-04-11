@@ -9,142 +9,100 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-<body>
+
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">HTML Purifier</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn-outline-primary">Primary</button>
+        </div>
+      </nav>
+    </header>
 
 
-  <header>
-   <!-- Fixed navbar -->
-   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-     <a class="navbar-brand" href="#">Fixed navbar</a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse" id="navbarCollapse">
-       <ul class="navbar-nav mr-auto">
-         <li class="nav-item active">
-           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#">Link</a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-         </li>
-       </ul>
-       <form class="form-inline mt-2 mt-md-0">
-         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-       </form>
-     </div>
-   </nav>
- </header>
+    <main role="main" class="flex-shrink-0">
+      <div id="wrapper" class="container">
+          <h1>HTML Purifier</h1>
+          <!-- HTMLタグ外し機能 -->
+          <form action="" name="form1" method="post" class="m-5">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">ここでHTMLタグを外すよ！入れたら「変換」をクリック！</label>
+              <textarea name="inputdata" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            <div class="text-center">
+              <input type="submit" value="変換" onClick="purify(); return false;" class="btn btn-primary">
+              <input type="reset" value="リセット" class="btn btn-primary">
+            </div>
+            <hr>
+            <hr class="w-75">
+            <hr class="w-50">
+            <div class="form-group">
+              <textarea name="outputdata" rows="10" cols="64" class="form-control"></textarea>
+            </div>
+            <div class="text-center">
+              文字数：<input value="0" name="counts">
+            </div>
+          </form>
 
-<main role="main" class="flex-shrink-0">
-    <div id="wrapper" class="container">
-        <h1>HTML Purifier</h1>
+          <!-- キーワード検索機能 -->
+          <form action="" name="form2" method="post">
+            <div class="form-group text-center">
+              キーワード検索：<input name="kwd">
+            </div>
+            <div class="text-center">
+              <input type="submit" value="検索" onClick="keyword(); return false;" class="btn btn-primary">
+              <input type="reset" value="リセット" class="btn btn-primary">
+            </div>
+            <div class="text-center m-3">
+              キーワード含有数：<input value="0" name="kwd_counts">
+            </div>
 
-<!-- boot strap form -->
-<form action="" name="form1" method="post">
-
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea name="inputdata" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-
-    <input type="submit" value="変換" onClick="purify(); return false;" class="btn btn-primary">
-    <input type="reset" value="リセット" class="btn btn-primary">
-
-    <hr>
-    <hr>
-    <hr>
-
-    <div class="form-group">
-        <textarea name="outputdata" rows="10" cols="64" class="form-control"></textarea>
-        文字数：<input value="0" name="counts">
-    </div>
-</form>
-
-<!-- / boot strap form -->
-
-
-
-        <form action="" name="form2" method="post">
-        <table class="kwd-table">
-          <tr>
-            <th>出力2</th>
-          </tr>
-          <tr>
-            <td>キーワード検索：<input name="kwd"></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="center">
-              <input type="submit" value="検索" onClick="keyword(); return false;">
-              <input type="reset" value="リセット">
-            </td>
-          </tr>
-          <tr>
-            <td>キーワード含有数：<input value="0" name="kwd_counts"></td>
-          </tr>
-        </table>
-        </form>
-
-
-    </div>
-</main>
-</body>
+          </form>
+        </div>
+      </main>
+    </body>
 </html>
 
 
-
-
-
-<style>
-
-
-.purifier-table{
-  margin: 0 auto;
-}
-
-.kwd-table{
-  margin: 0 auto;
-}
-
-form {
-  display: block;
-}
-
-table{
-  margin-bottom: 20px;
-}
-
-</style>
-
-
-
 <script>
-
 function purify(){
-  console.log("fuck you ");
-  var a = document.form1.inputdata.value;
-  var e = document.form1.outputdata;
-  var u = document.form1.counts;
+    var user_input = document.form1.inputdata.value;
+    var final_output = document.form1.outputdata;
+    var moji_count = document.form1.counts;
 
-  e.value = a.replace(/(<(".*?"|'.*?'|[^'"])*?>|\[(.*?)\])/g,"");
-  u.value = e.value.replace(/\n/g,"").length;
-  return false;
+    final_output.value = user_input.replace(/(<(".*?"|'.*?'|[^'"])*?>|\[(.*?)\])/g,"");
+    moji_count.value = final_output.value.replace(/\n/g,"").length;
 }
 
 function keyword(){
-  var i = document.form2.kwd;
-  var o = document.form1.outputdata.value;
-  var s = document.form2.kwd_counts;
+    var user_keyword = document.form2.kwd;
+    var final_output = document.form1.outputdata.value;
+    var keyword_count = document.form2.kwd_counts;
 
-  s.value = ( o.match( new RegExp( i.value, "g" ) ) || [] ).length;
-  return false;
+    keyword_count.value = ( final_output.match( new RegExp( user_keyword.value, "g" ) ) || [] ).length;
 }
-
-
 </script>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
