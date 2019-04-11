@@ -1,67 +1,96 @@
-<!DOCTYPE html>
-<html lang = “ja”>
-<head>
-  <meta charset = “UFT-8”>
-  <title>HTML Purifier</title>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>HTML Purifier</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
 <body>
-<div id="wrapper">
-<h1>HTML Purifier</h1>
 
+
+  <header>
+   <!-- Fixed navbar -->
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+     <a class="navbar-brand" href="#">Fixed navbar</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarCollapse">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">Link</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+         </li>
+       </ul>
+       <form class="form-inline mt-2 mt-md-0">
+         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       </form>
+     </div>
+   </nav>
+ </header>
+
+<main role="main" class="flex-shrink-0">
+    <div id="wrapper" class="container">
+        <h1>HTML Purifier</h1>
+
+<!-- boot strap form -->
 <form action="" name="form1" method="post">
-  <table class="purifier-table">
-    <tr>
-      <th>入力</th>
-    </tr>
-    <tr>
-      <td><textarea name="inputdata" rows="10" cols="64"></textarea></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <input type="submit" value="変換" onClick="purify(); return false;">
-        <input type="reset" value="リセット">
-      </td>
-    </tr>
-  </table>
-  <table class="purifier-table">
-    <tr>
-      <th>出力</th>
-    </tr>
-    <tr>
-      <td><textarea name="outputdata" rows="10" cols="64"></textarea></td>
-    </tr>
-    <tr>
-      <td>文字数：<input value="0" name="counts"></td>
-    </tr>
-  </table>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea name="inputdata" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <input type="submit" value="変換" onClick="purify(); return false;" class="btn btn-primary">
+    <input type="reset" value="リセット" class="btn btn-primary">
+
+    <hr>
+    <hr>
+    <hr>
+
+    <div class="form-group">
+        <textarea name="outputdata" rows="10" cols="64" class="form-control"></textarea>
+        文字数：<input value="0" name="counts">
+    </div>
 </form>
 
-
-<form action="" name="form2" method="post">
-<table class="kwd-table">
-  <tr>
-    <th>出力2</th>
-  </tr>
-  <tr>
-    <td>キーワード検索：<input name="kwd"></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <input type="submit" value="検索" onClick="keyword(); return false;">
-      <input type="reset" value="リセット">
-    </td>
-  </tr>
-  <tr>
-    <td>キーワード含有数：<input value="0" name="kwd_counts"></td>
-  </tr>
-</table>
-</form>
+<!-- / boot strap form -->
 
 
-</div>
+
+        <form action="" name="form2" method="post">
+        <table class="kwd-table">
+          <tr>
+            <th>出力2</th>
+          </tr>
+          <tr>
+            <td>キーワード検索：<input name="kwd"></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" value="検索" onClick="keyword(); return false;">
+              <input type="reset" value="リセット">
+            </td>
+          </tr>
+          <tr>
+            <td>キーワード含有数：<input value="0" name="kwd_counts"></td>
+          </tr>
+        </table>
+        </form>
+
+
+    </div>
+</main>
 </body>
 </html>
 
@@ -70,10 +99,6 @@
 
 
 <style>
-
-#wrapper {
- text-align: center;
-}
 
 
 .purifier-table{
@@ -99,12 +124,14 @@ table{
 <script>
 
 function purify(){
+  console.log("fuck you ");
   var a = document.form1.inputdata.value;
   var e = document.form1.outputdata;
   var u = document.form1.counts;
 
   e.value = a.replace(/(<(".*?"|'.*?'|[^'"])*?>|\[(.*?)\])/g,"");
   u.value = e.value.replace(/\n/g,"").length;
+  return false;
 }
 
 function keyword(){
@@ -113,7 +140,14 @@ function keyword(){
   var s = document.form2.kwd_counts;
 
   s.value = ( o.match( new RegExp( i.value, "g" ) ) || [] ).length;
+  return false;
 }
 
 
 </script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
