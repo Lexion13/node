@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+
+
   <head>
     <title>HTML Purifier</title>
     <!-- Required meta tags -->
@@ -11,6 +13,7 @@
   </head>
 
   <body>
+
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -83,7 +86,6 @@
     </body>
 </html>
 
-
 <script>
 function purify(){
     var user_input = document.form1.inputdata.value;
@@ -101,7 +103,9 @@ function keyword(){
 
     keyword_count.value = ( final_output.match( new RegExp( user_keyword.value, "g" ) ) || [] ).length;
 }
+
 </script>
+
 
 
 <!-- Optional JavaScript -->
